@@ -1,0 +1,94 @@
+/*
+ * MySensors Node is a companion software to work with the MySensors library (http://www.mysensors.org) 
+ * for wireless sensor/actuator connection to a home automation / monitoring system.  This software is 
+ * designed to be used on the sensor / actuator device running on a Arduino microcontroller.  The base 
+ * software can be extended to include additional functionality by extending the abstract 
+ * MySensor_Node_Sensor class.  
+ * 
+ * Created by Dave Myers <brahmafear@gmail.com>
+ * Copyright (c) 2017
+ * 
+ * http://github.com/brahmafear/
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * version 2 as published by the Free Software Foundation.
+ */
+
+/*
+ * Node config
+ */
+#define MY_NODE_MAX_SENSORS                3
+#define MY_NODE_DESCRIPTION                "Sample"
+#define MY_NODE_VERSION                    "0.01"
+#define ENABLE_DEBUG
+
+/* 
+ * MySensor config
+ */
+#define MY_DEBUG
+#define MY_NODE_ID                      247
+#define MY_RADIO_NRF24
+#define MY_RF24_SANITY_CHECK
+// #define MY_RF24_CE_PIN               8
+// #define MY_RF24_CS_PIN               7
+// #define MY_REPEATER_FEATURE
+
+
+
+// Includes
+#include <SPI.h>
+#include <MySensors.h>                          // A bunch of code runs as soon as this is included - 
+                                                // and before sketch setup().  Uncomment MY_DEBUG to see.
+#include "MySensors_Node.h"                     // Must come *after* including MySensors.h.  
+
+
+// Global variables
+MySensors_Node node(MY_NODE_DESCRIPTION, MY_NODE_VERSION);
+
+
+
+
+void presentation() {
+
+  // Add sensors here
+
+  Serial.println("**** Adding Sensors.");
+  MySensors_Node_Sensor_Gpio_Out nsgo( 11, "Simple LED 1", 5, true );
+  Serial.println( node.add_sensor( &nsgo ) );
+
+  Serial.println( node.add_sensor( &MySensors_Node_Sensor_Gpio_Out( 12, "Simple LED 2", 6, false ) ) );
+
+
+
+
+  // Call present() of node sensors
+
+  Serial.println("**** Presenting Sensors.");  
+  node.present();
+}
+
+void receive( const MyMessage &msg ) {
+  Serial.println("**** Received Message.");
+  node.receive( msg );
+}
+
+
+void setup() {
+  Serial.begin(115200);
+  Serial.println(F("\nNode begin."));
+
+  // Add additional code here
+  
+  // This line must be included in setup()
+  node.setup();
+}
+
+void loop() {
+
+  // Add additional code here
+  // Do not use delay() or other code with signifigant processing time
+
+  // This line must be included in loop()
+  node.loop();
+}

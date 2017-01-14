@@ -1,0 +1,4 @@
+.*
+!/.gitignore
+*.gch
+gitupdate.sh
