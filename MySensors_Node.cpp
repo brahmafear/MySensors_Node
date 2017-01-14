@@ -28,14 +28,17 @@ MySensors_Node::~MySensors_Node() {
 }
 
 bool MySensors_Node::add_sensor( MySensors_Node_Sensor *sensor ) {
-  if ( _sensor_count >= NODE_MAX_SENSORS ) return false;
+  // if ( _sensor_count >= NODE_MAX_SENSORS ) return false;
   for ( uint8_t i = 0; i < _sensor_count; i++ ) {
     if ( _node_sensors[i]->get_sensor_id() == sensor->get_sensor_id() ) return false;
   }
 
-  _node_sensors[_sensor_count] = sensor->clone();
+  //_node_sensors[_sensor_count] = sensor->clone();
+  //_sensor_count++;
 
-  _sensor_count++;
+  _node_sensors.push_back(sensor->clone());
+  _sensor_count = _node_sensors.size();
+
   DEBUG_MSG(F("[MySensors_Node] Added: "));
   DEBUG_MSG( sensor->get_description() );
   DEBUG_MSG("\n");

@@ -24,6 +24,7 @@
 #include "core/MyMessage.h"
 #include "core/MySensorsCore.h"
 
+#include "vector.h"
 #include "MySensors_Node_Sensor.h"
 
 #include "MySensors_Node_Sensor_Gpio_Out.h"                         // List all types of sensors here to prevent
@@ -31,9 +32,9 @@
 
 
 
-#ifndef NODE_MAX_SENSORS
-  #define NODE_MAX_SENSORS 4
-#endif
+//#ifndef NODE_MAX_SENSORS
+//  #define NODE_MAX_SENSORS 4
+//#endif
 
 class MySensors_Node {
 
@@ -52,8 +53,8 @@ class MySensors_Node {
     String _description;
     String _version;
     uint8_t _sensor_count;
-    MySensors_Node_Sensor* _node_sensors[ NODE_MAX_SENSORS ];
-
+    //MySensors_Node_Sensor* _node_sensors[ NODE_MAX_SENSORS ];
+    Vector< MySensors_Node_Sensor* > _node_sensors;
 };
 
 #endif

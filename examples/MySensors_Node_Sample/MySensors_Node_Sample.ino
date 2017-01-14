@@ -18,7 +18,7 @@
 /*
  * Node config
  */
-#define MY_NODE_MAX_SENSORS                3            // The max number of sensors that will be added.
+//#define MY_NODE_MAX_SENSORS                3            // The max number of sensors that will be added.
 #define MY_NODE_DESCRIPTION                "Sample"     // Any string description of the node to send to controller. 
 #define MY_NODE_VERSION                    "0.01"       // Version to send to controller.  
 #define ENABLE_DEBUG                                    // Enables debug messages to serial console.
