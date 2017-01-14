@@ -19,10 +19,11 @@
 #define __MYSENSORS_NODE_SENSOR_H
 
 #include <Arduino.h>
-#include "../MySensors/core/MyMessage.h"
-#include "../MySensors/core/MySensorsCore.h"
 #include "debug.h"
-
+// #include "../MySensors/core/MyMessage.h"
+// #include "../MySensors/core/MySensorsCore.h"
+#include "core/MyMessage.h"
+#include "core/MySensorsCore.h"
 
 // abstract for other node features
 class MySensors_Node_Sensor {

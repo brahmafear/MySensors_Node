@@ -19,11 +19,15 @@
 #define __MYSENSORS_NODE_H
 
 #include <Arduino.h>
-#include "../MySensors/core/MyMessage.h"                            // Terrible hack to get things to work
 #include "debug.h"
+//#include "../MySensors/core/MyMessage.h"                            // Terrible hack to get things to work
+#include "core/MyMessage.h"
+#include "core/MySensorsCore.h"
+
 #include "MySensors_Node_Sensor.h"
 
-#include "MySensors_Node_Sensor_Gpio_Out.h"                         // List all types of sensors here to prevent need
+#include "MySensors_Node_Sensor_Gpio_Out.h"                         // List all types of sensors here to prevent
+                                                                    // need to import from main sketch
 
 
 
