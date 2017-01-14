@@ -37,8 +37,8 @@ class MySensors_Node_Sensor {
     virtual void node_sensor_request();                           // can be used by children
     virtual void node_sensor_setup();
     virtual void node_sensor_loop();
-    virtual void node_sensor_receive( const MyMessage &msg ) = 0; // These must be overridden
-    virtual MySensors_Node_Sensor* clone() const = 0;             // by all children
+    virtual void node_sensor_receive( const MyMessage &msg );
+    virtual MySensors_Node_Sensor* clone() const = 0;             // This must be overridden by all children
 
 
     uint8_t get_sensor_id();

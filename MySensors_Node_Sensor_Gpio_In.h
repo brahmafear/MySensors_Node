@@ -29,7 +29,7 @@ class MySensors_Node_Sensor_Gpio_In : public MySensors_Node_Sensor {
     ~MySensors_Node_Sensor_Gpio_In();
 
     //void node_sensor_present();
-    void node_sensor_receive( const MyMessage &msg );
+    //void node_sensor_receive( const MyMessage &msg );
     void node_sensor_setup();
     void node_sensor_loop();
     MySensors_Node_Sensor* clone() const;

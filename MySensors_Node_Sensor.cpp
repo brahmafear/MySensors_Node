@@ -44,6 +44,8 @@ void MySensors_Node_Sensor::node_sensor_request( ) {
   request( get_sensor_id(), get_message_type() );
 }
 
+void MySensors_Node_Sensor::node_sensor_receive( const MyMessage &msg ) { }
+
 void MySensors_Node_Sensor::node_sensor_setup() {
   DEBUG_MSG(F("[MySensors_Node_Sensor] Setup.\n"));
 }

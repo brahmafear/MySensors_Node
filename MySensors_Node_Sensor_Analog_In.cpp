@@ -41,9 +41,9 @@ MySensors_Node_Sensor* MySensors_Node_Sensor_Analog_In::clone() const {
   return new MySensors_Node_Sensor_Analog_In( *this );
 }
 
-void MySensors_Node_Sensor_Analog_In::node_sensor_receive( const MyMessage &msg ) {
+/* void MySensors_Node_Sensor_Analog_In::node_sensor_receive( const MyMessage &msg ) {
 
-}
+} */
 
 void MySensors_Node_Sensor_Analog_In::node_sensor_setup( ) {
   DEBUG_MSG(F("[MySensors_Node_Sensor_Analog_Input] Setup.\n"));

@@ -24,7 +24,12 @@
 
 class MySensors_Node_Sensor_Gpio_Out : public MySensors_Node_Sensor {
   public:
-    MySensors_Node_Sensor_Gpio_Out( uint8_t sensor_id, uint8_t sensor_type, uint8_t message_type, String description, uint8_t pin, bool active );
+    MySensors_Node_Sensor_Gpio_Out( uint8_t sensor_id, 
+                                    uint8_t sensor_type,
+                                    uint8_t message_type,
+                                    String description,
+                                    uint8_t pin,          // Pin used by this device
+                                    bool active );        // The 'active' state of the device
     MySensors_Node_Sensor_Gpio_Out( uint8_t sensor_id, String description, uint8_t pin, bool active );
     ~MySensors_Node_Sensor_Gpio_Out();
 
