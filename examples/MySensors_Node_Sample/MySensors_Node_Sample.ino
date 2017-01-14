@@ -18,7 +18,6 @@
 /*
  * Node config
  */
-//#define MY_NODE_MAX_SENSORS                3            // The max number of sensors that will be added.
 #define MY_NODE_DESCRIPTION                "Sample"     // Any string description of the node to send to controller. 
 #define MY_NODE_VERSION                    "0.01"       // Version to send to controller.  
 #define ENABLE_DEBUG                                    // Enables debug messages to serial console.
@@ -57,7 +56,6 @@ void presentation() {
   MySensors_Node_Sensor_Gpio_Out nsgo( 11, "Simple LED 1", 5, true );
   Serial.println( node.add_sensor( &nsgo ) );
 
-  //Serial.println( node.add_sensor( &MySensors_Node_Sensor_Gpio_Out( 12, "Simple LED 2", 6, false ) ) );
   Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Gpio_Out( 12, "Simple LED 2", 6, false ) ) );
 
 

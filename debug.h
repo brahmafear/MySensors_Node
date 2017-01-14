@@ -1,3 +1,9 @@
+/*
+ * Borrowed from here:
+ * https://bitbucket.org/xoseperez/espurna
+ */
+
+
 #ifndef __DEBUG_H
 #define __DEBUG_H
 

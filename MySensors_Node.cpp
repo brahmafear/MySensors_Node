@@ -69,10 +69,13 @@ void MySensors_Node::setup() {
   DEBUG_MSG( _description );
   DEBUG_MSG(F(" version "));
   DEBUG_MSG( _version );
+  DEBUG_MSG(F(" node ID: "));
+  DEBUG_MSG( getNodeId() );
+  DEBUG_MSG(F(" and parent ID: "));
+  DEBUG_MSG( getParentNodeId() );
   DEBUG_MSG(F(" with features:\n"));
   for ( uint8_t i = 0; i < _node_sensors.size(); i++ ) {
-    DEBUG_MSG( i );
-    DEBUG_MSG(" ");
+    DEBUG_MSG(" * ");
     DEBUG_MSG( _node_sensors[i]->get_sensor_id() );
     DEBUG_MSG(" ");
     DEBUG_MSG( _node_sensors[i]->get_sensor_type() );

@@ -1,3 +1,9 @@
+/*
+ * Borrowed from here:
+ * https://forum.arduino.cc/index.php?topic=45626.msg330886#msg330886
+ */
+
+
 // Minimal class to replace std::vector
 template<typename Data>
 class Vector {
