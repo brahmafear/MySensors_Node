@@ -18,30 +18,30 @@
 /*
  * Node config
  */
-#define MY_NODE_MAX_SENSORS                3
-#define MY_NODE_DESCRIPTION                "Sample"
-#define MY_NODE_VERSION                    "0.01"
-#define ENABLE_DEBUG
+#define MY_NODE_MAX_SENSORS                3            // The max number of sensors that will be added.
+#define MY_NODE_DESCRIPTION                "Sample"     // Any string description of the node to send to controller. 
+#define MY_NODE_VERSION                    "0.01"       // Version to send to controller.  
+#define ENABLE_DEBUG                                    // Enables debug messages to serial console.
 
 /* 
  * MySensor config
  */
-#define MY_DEBUG
-#define MY_NODE_ID                      247
-#define MY_RADIO_NRF24
-#define MY_RF24_SANITY_CHECK
-// #define MY_RF24_CE_PIN               8
-// #define MY_RF24_CS_PIN               7
-// #define MY_REPEATER_FEATURE
+#define MY_DEBUG                                        // Displays *lots* of messages from MySensors library.
+#define MY_NODE_ID                      247             // Forces node id.  Comment out for auto selection.
+#define MY_RADIO_NRF24                                  // Sets library to use NRF24L01+ radio.
+#define MY_RF24_SANITY_CHECK                            // Enables MySensors additional checks on radio.
+// #define MY_RF24_CE_PIN               8               // Overrides the NRF24L01+ CE pin - default 9 on AVR.
+// #define MY_RF24_CS_PIN               7               // Overrides the NRF24L01+ CS pin - default 10 on AVR.
+// #define MY_REPEATER_FEATURE                          // Enables this node as a repeater.
 
 
 
 // Includes
 #include <SPI.h>
-#include <MySensors.h>                          // A bunch of code runs as soon as this is included - 
-                                                // and before sketch setup().  Uncomment MY_DEBUG to see.
-#include "MySensors_Node.h"                     // Must come *after* including MySensors.h.  
-
+#include <MySensors.h>                                  // A bunch of code runs as soon as this is included - 
+                                                        // and before sketch setup().  Uncomment MY_DEBUG to see.
+#include "MySensors_Node.h"                             // Must come *after* including MySensors.h.  
+  
 
 // Global variables
 MySensors_Node node(MY_NODE_DESCRIPTION, MY_NODE_VERSION);
