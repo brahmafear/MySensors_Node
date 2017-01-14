@@ -57,8 +57,8 @@ void presentation() {
   MySensors_Node_Sensor_Gpio_Out nsgo( 11, "Simple LED 1", 5, true );
   Serial.println( node.add_sensor( &nsgo ) );
 
-  Serial.println( node.add_sensor( &MySensors_Node_Sensor_Gpio_Out( 12, "Simple LED 2", 6, false ) ) );
-
+  //Serial.println( node.add_sensor( &MySensors_Node_Sensor_Gpio_Out( 12, "Simple LED 2", 6, false ) ) );
+  Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Gpio_Out( 12, "Simple LED 2", 6, false ) ) );
 
 
 

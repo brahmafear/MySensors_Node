@@ -34,6 +34,7 @@ bool MySensors_Node::add_sensor( MySensors_Node_Sensor *sensor ) {
   }
 
   _node_sensors[_sensor_count] = sensor->clone();
+
   _sensor_count++;
   DEBUG_MSG(F("[MySensors_Node] Added: "));
   DEBUG_MSG( sensor->get_description() );

@@ -39,7 +39,6 @@ class MySensors_Node_Sensor_Gpio_Out : public MySensors_Node_Sensor {
     bool     _active;
     bool     _msg_received;
 
-    // _init();
 };
 
 
