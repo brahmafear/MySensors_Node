@@ -26,7 +26,11 @@
 // abstract for other node features
 class MySensors_Node_Sensor {
   public:
-    MySensors_Node_Sensor( uint8_t sensor_id, uint8_t sensor_type, uint8_t message_type, String description );
+    MySensors_Node_Sensor( uint8_t sensor_id,         // ID of this sensor
+                           uint8_t sensor_type,       // The sensor type from the MySensors library
+                           uint8_t message_type,      // The message type from the MySensors library
+                           String description         // A description of this sensor to send to controller
+                         );
     ~MySensors_Node_Sensor();
 
     virtual void node_sensor_present();                           // These are defaults that

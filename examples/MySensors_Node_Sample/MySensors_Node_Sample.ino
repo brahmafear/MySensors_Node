@@ -58,6 +58,7 @@ void presentation() {
 
   Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Gpio_Out( 12, "Simple LED 2", 6, false ) ) );
   Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Gpio_In( 13, "Simple Motion", 2, true, INPUT_PULLUP, 500 ) ) );
+  Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Analog_In( 14, "Analog In", A0, true, 1024, 10000 ) ) );
 
 
 
