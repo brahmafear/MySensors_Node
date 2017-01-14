@@ -44,11 +44,11 @@ void MySensors_Node_Sensor::node_sensor_request( ) {
   request( get_sensor_id(), get_message_type() );
 }
 
-/* void MySensors_Node_Sensor::node_sensor_setup() {
+void MySensors_Node_Sensor::node_sensor_setup() {
   DEBUG_MSG(F("[MySensors_Node_Sensor] Setup.\n"));
-} */
+}
 
-// void MySensors_Node_Sensor::node_sensor_loop() { }
+void MySensors_Node_Sensor::node_sensor_loop() { }
 
 uint8_t MySensors_Node_Sensor::get_sensor_id()  {
   return _sensor_id;

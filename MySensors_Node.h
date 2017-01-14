@@ -32,9 +32,6 @@
 
 
 
-//#ifndef NODE_MAX_SENSORS
-//  #define NODE_MAX_SENSORS 4
-//#endif
 
 class MySensors_Node {
 
@@ -52,8 +49,6 @@ class MySensors_Node {
 
     String _description;
     String _version;
-    uint8_t _sensor_count;
-    //MySensors_Node_Sensor* _node_sensors[ NODE_MAX_SENSORS ];
     Vector< MySensors_Node_Sensor* > _node_sensors;
 };
 

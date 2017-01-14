@@ -20,8 +20,6 @@
 
 #include <Arduino.h>
 #include "debug.h"
-// #include "../MySensors/core/MyMessage.h"
-// #include "../MySensors/core/MySensorsCore.h"
 #include "core/MyMessage.h"
 #include "core/MySensorsCore.h"
 
@@ -31,12 +29,12 @@ class MySensors_Node_Sensor {
     MySensors_Node_Sensor( uint8_t sensor_id, uint8_t sensor_type, uint8_t message_type, String description );
     ~MySensors_Node_Sensor();
 
-    void node_sensor_present();
-    void node_sensor_request();
-    virtual void node_sensor_setup() = 0;
-    virtual void node_sensor_loop() = 0;
-    virtual void node_sensor_receive( const MyMessage &msg ) = 0;
-    virtual MySensors_Node_Sensor* clone() const = 0;
+    virtual void node_sensor_present();                           // These are defaults that
+    virtual void node_sensor_request();                           // can be used by children
+    virtual void node_sensor_setup();
+    virtual void node_sensor_loop();
+    virtual void node_sensor_receive( const MyMessage &msg ) = 0; // These must be overridden
+    virtual MySensors_Node_Sensor* clone() const = 0;             // by all children
 
 
     uint8_t get_sensor_id();

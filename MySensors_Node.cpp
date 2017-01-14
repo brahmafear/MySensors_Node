@@ -20,7 +20,6 @@
 MySensors_Node::MySensors_Node( String description, String ver ) {
   _description = description;
   _version = ver;
-  _sensor_count = 0;
 }
 
 MySensors_Node::~MySensors_Node() {
@@ -28,16 +27,11 @@ MySensors_Node::~MySensors_Node() {
 }
 
 bool MySensors_Node::add_sensor( MySensors_Node_Sensor *sensor ) {
-  // if ( _sensor_count >= NODE_MAX_SENSORS ) return false;
-  for ( uint8_t i = 0; i < _sensor_count; i++ ) {
+  for ( uint8_t i = 0; i < _node_sensors.size(); i++ ) {
     if ( _node_sensors[i]->get_sensor_id() == sensor->get_sensor_id() ) return false;
   }
 
-  //_node_sensors[_sensor_count] = sensor->clone();
-  //_sensor_count++;
-
   _node_sensors.push_back(sensor->clone());
-  _sensor_count = _node_sensors.size();
 
   DEBUG_MSG(F("[MySensors_Node] Added: "));
   DEBUG_MSG( sensor->get_description() );
@@ -48,7 +42,7 @@ bool MySensors_Node::add_sensor( MySensors_Node_Sensor *sensor ) {
 void MySensors_Node::present() {
   sendSketchInfo( _description.c_str(), _version.c_str() );
 
-  for ( uint8_t i = 0; i < _sensor_count; i++ ) {
+  for ( uint8_t i = 0; i < _node_sensors.size(); i++ ) {
     _node_sensors[i]->node_sensor_present();
   }
 
@@ -56,10 +50,10 @@ void MySensors_Node::present() {
 
 void MySensors_Node::receive( const MyMessage &msg ) {
 
-  for ( uint8_t i = 0; i < _sensor_count; i++ ) {
+  for ( uint8_t i = 0; i < _node_sensors.size(); i++ ) {
     if ( msg.sensor == _node_sensors[i]->get_sensor_id() ) {
       _node_sensors[i]->node_sensor_receive( msg );
-      i = _sensor_count; // exit loop early since no sensor should have same id as another
+      break; // exit loop early since no sensor should have same id as another
     }
   }
 
@@ -67,7 +61,7 @@ void MySensors_Node::receive( const MyMessage &msg ) {
 
 void MySensors_Node::setup() {
 
-  for ( uint8_t i = 0; i < _sensor_count; i++ ) {
+  for ( uint8_t i = 0; i < _node_sensors.size(); i++ ) {
     _node_sensors[i]->node_sensor_setup();
   }
 
@@ -76,7 +70,7 @@ void MySensors_Node::setup() {
   DEBUG_MSG(F(" version "));
   DEBUG_MSG( _version );
   DEBUG_MSG(F(" with features:\n"));
-  for ( uint8_t i = 0; i < _sensor_count; i++ ) {
+  for ( uint8_t i = 0; i < _node_sensors.size(); i++ ) {
     DEBUG_MSG( i );
     DEBUG_MSG(" ");
     DEBUG_MSG( _node_sensors[i]->get_sensor_id() );
@@ -90,7 +84,7 @@ void MySensors_Node::setup() {
 
 void MySensors_Node::loop() {
 
-  for ( uint8_t i = 0; i < _sensor_count; i++ ) {
+  for ( uint8_t i = 0; i < _node_sensors.size(); i++ ) {
     _node_sensors[i]->node_sensor_loop();
   }
 }
