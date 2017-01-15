@@ -86,10 +86,11 @@ for use with CdS light-dependent resistors but can be used to measure and report
   * Max Value -- the value which represents a 100% reading, usually 1023
   * Interval -- frequency in ms to read and post to controller
 
+**DHT Temperature/Humidity Sensor**  
+
+
 **FUTURE -- coming very soon**
 
 **RGB LED**
 
 **NeoPixel**
-
-**DHT Temperature/Humidity Sensor**  
