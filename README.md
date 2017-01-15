@@ -26,6 +26,7 @@ This setup relies upon polling and offers no sleep functionality.  As such, it i
 *highly unsuited* for battery-powered operation.  
 
 **GPIO Output**
+
 MySensors_Node_Sensor_Gpio_Out takes either 6 or 4 initialization parameters.  
   * Sensor ID -- the child id of this sensor / actuator
   * Sensor type -- the type from MySensors library, defaults to S_BINARY
@@ -38,6 +39,7 @@ MySensors_Node_Sensor_Gpio_Out takes either 6 or 4 initialization parameters.
   and V_STATUS.  
 
 **GPIO Input**
+
 MySensors_Node_Sensor_Gpio_In takes either 8 or 6 initialization parameters.  
   * Sensor ID -- the child id of this sensor / actuator
   * Sensor type -- the type from MySensors library, defaults to S_MOTION
@@ -49,6 +51,7 @@ MySensors_Node_Sensor_Gpio_In takes either 8 or 6 initialization parameters.
   * Interval -- frequency in ms to read and post to controller
 
 **PWM Output**
+
 MySensors_Node_Sensor_Pwm takes either 8 or 6 initialization parameters.  
   * Sensor ID -- the child id of this sensor / actuator
   * Sensor type -- the type from MySensors library, defaults to S_DIMMER
@@ -60,6 +63,7 @@ MySensors_Node_Sensor_Pwm takes either 8 or 6 initialization parameters.
   * Max Value -- the value which represents a 100% pwm duty cycle, usually 255
 
 **Analog Input**
+
 MySensors_Node_Sensor_Analog_In takes either 8 or 6 initialization parameters.  
   * Sensor ID -- the child id of this sensor / actuator
   * Sensor type -- the type from MySensors library, defaults to S_MOTION
