@@ -39,14 +39,14 @@ MySensors_Node_Sensor* MySensors_Node_Sensor_Gpio_Out::clone() const {
 void MySensors_Node_Sensor_Gpio_Out::node_sensor_receive( const MyMessage &msg ) {
   if ( msg.type == get_message_type() ) {
     int data = msg.getInt();
-    DEBUG_MSG(F("[MySensors_Node_Sensor_GPIO_Output] Message received for "));
+    DEBUG_MSG(F("[MySensors_Node_Sensor_Gpio_Output] Message received for "));
     DEBUG_MSG( get_description() );
     DEBUG_MSG( data != 0 ? F(" with value true.\n") : F(" with value false.\n"));
     digitalWrite( _pin, data != 0 ? _active : ! _active );
     send( MyMessage(get_sensor_id(), get_message_type()).set(data) );
     _msg_received = true;
   } else {
-    DEBUG_MSG(F("[MySensors_Node_Sensor_GPIO_Output] Incorrect message type received.\n"));
+    DEBUG_MSG(F("[MySensors_Node_Sensor_Gpio_Output] Incorrect message type received.\n"));
   }
 }
 

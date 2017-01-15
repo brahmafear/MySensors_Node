@@ -53,13 +53,14 @@ void presentation() {
   // Add sensors here
 
   Serial.println("**** Adding Sensors.");
+  // Create a sensor object to add
   MySensors_Node_Sensor_Gpio_Out nsgo( 11, "Simple LED 1", 5, true );
   Serial.println( node.add_sensor( &nsgo ) );
 
-  Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Gpio_Out( 12, "Simple LED 2", 6, false ) ) );
+  // Or inline create
   Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Gpio_In( 13, "Simple Motion", 2, true, INPUT_PULLUP, 500 ) ) );
   Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Analog_In( 14, "Analog In", A0, true, 1024, 10000 ) ) );
-
+  Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Pwm( 15, "PWM LED", 6, true, true, 255 ) ) );
 
 
   // Call present() of node sensors

@@ -30,7 +30,7 @@
 #include "MySensors_Node_Sensor_Gpio_Out.h"                         // List all types of sensors here to prevent
 #include "MySensors_Node_Sensor_Gpio_In.h"                          // need to import from main sketch
 #include "MySensors_Node_Sensor_Analog_In.h"
-
+#include "MySensors_Node_Sensor_Pwm.h"
 
 
 
