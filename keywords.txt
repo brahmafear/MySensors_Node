@@ -1,0 +1,29 @@
+###########################################
+# Syntax Coloring Map For MySensors_Node
+###########################################
+
+###########################################
+# Datatypes (KEYWORD1)
+###########################################
+MySensors_Node KEYWORD1
+MySensors_Node_Sensor KEYWORD1
+MySensors_Node_Sensor_Pwm KEYWORD1
+MySensors_Node_Sensor_Gpio_In KEYWORD1
+MySensors_Node_Sensor_Gpio_Out KEYWORD1
+MySensors_Node_Sensor_Analog_In KEYWORD1
+
+###########################################
+# Methods and Functions (KEYWORD2)
+###########################################
+present KEYWORD2
+receive KEYWORD2
+add_sensor KEYWORD2
+node_sensor_present KEYWORD2
+node_sensor_request KEYWORD2
+node_sensor_setup KEYWORD2
+node_sensor_loop KEYWORD2
+node_sensor_receive KEYWORD2
+
+###########################################
+# Constants (LITERAL1)
+###########################################
