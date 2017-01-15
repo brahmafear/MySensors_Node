@@ -69,3 +69,11 @@ MySensors_Node_Sensor_Analog_In takes either 8 or 6 initialization parameters.
   * Percentage -- true if message to controller is a 0-100 representing a percentage
   * Max Value -- the value which represents a 100% reading, usually 1023
   * Interval -- frequency in ms to read and post to controller
+
+**FUTURE -- coming very soon**
+
+**RGB LED**
+
+**NeoPixel**
+
+**DHT Temperature/Humidity Sensor**  
