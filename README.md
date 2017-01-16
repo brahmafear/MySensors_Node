@@ -90,9 +90,31 @@ for use with CdS light-dependent resistors but can be used to measure and report
 
 **DHT Temperature/Humidity Sensor**  
 
+MySensors_Node_Sensor_Dht11 takes 6 initialization parameters.  Intended for use with DHT11 sensor.
+  * Temperature ID -- the child id for temperature
+  * Humidity ID -- the child id for humidity
+  * Description -- a description to pass to controller
+  * GPIO pin -- the microcontroller gpio pin connected to DHT11
+  * Pullup -- true to activate pullup resistor
+  * Interval -- frequency in ms to read and post to controller
+  * Offset -- negative or positive value that temperature reading should be adjusted by
+
+**RGB LED**
+
+MySensors_Node_Sensor_Rgb takes either 8 or 6 initialization parameters.  Primarily intended
+for use as a dimmable light but could possibly be used for servo control.
+  * Sensor ID -- the child id of this sensor / actuator
+  * Sensor type -- the type from MySensors library, defaults to S_RGB_LIGHT
+  * Message type -- the message type associated with above type, defaults to V_RGB
+  * Description -- a description to pass to controller  
+  * Red pin -- the rgb red pin
+  * Green pin -- the rgb green pin
+  * Blue pin -- the rgb blue pin
+  * GPIO "on" state -- true for active high (common cathode), false for active low (common anode)
+
+
 
 **FUTURE -- coming very soon**
 
-**RGB LED**
 
 **NeoPixel**

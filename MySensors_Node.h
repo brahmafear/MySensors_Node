@@ -32,6 +32,7 @@
 #include "MySensors_Node_Sensor_Analog_In.h"
 #include "MySensors_Node_Sensor_Pwm.h"
 #include "MySensors_Node_Sensor_Dht11.h"
+#include "MySensors_Node_Sensor_Rgb.h"
 
 
 

@@ -78,6 +78,7 @@ void MySensors_Node_Sensor_Pwm::node_sensor_receive( const MyMessage &msg ) {
 
 void MySensors_Node_Sensor_Pwm::node_sensor_setup( ) {
   DEBUG_MSG(F("[MySensors_Node_Sensor_Pwm] Setup.\n"));
+  pinMode( _pin, OUTPUT );
   node_sensor_request();
 }
 
@@ -85,7 +86,8 @@ void MySensors_Node_Sensor_Pwm::node_sensor_loop( ) {
   static uint32_t delay5s = millis() + 5000;  // Give controller 5s to send previous state
   if ( _msg_received == false && millis() > delay5s ) {  // set to default, inactive state
     DEBUG_MSG(F("[MySensors_Node_Sensor_Pwm] Setting default state.\n"));
-    analogWrite( _pin, 0 );
+    //analogWrite( _pin, 0 );
+    set_pwm( 0 );
     send( MyMessage(get_sensor_id(), get_message_type()).set( 0 ));
     send( MyMessage(get_sensor_id(), V_STATUS ).set( 0 ) );
     _msg_received = true;
