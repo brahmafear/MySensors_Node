@@ -26,7 +26,7 @@
  * MySensor config
  */
 #define MY_DEBUG                                        // Displays *lots* of messages from MySensors library.
-#define MY_NODE_ID                      247             // Forces node id.  Comment out for auto selection.
+#define MY_NODE_ID                      246             // Forces node id.  Comment out for auto selection.
 #define MY_RADIO_NRF24                                  // Sets library to use NRF24L01+ radio.
 #define MY_RF24_SANITY_CHECK                            // Enables MySensors additional checks on radio.
 // #define MY_RF24_CE_PIN               8               // Overrides the NRF24L01+ CE pin - default 9 on AVR.
@@ -54,16 +54,16 @@ void presentation() {
 
   Serial.println("**** Adding Sensors.");
   // Create a sensor object to add
-  MySensors_Node_Sensor_Gpio_Out nsgo( 11, "Simple LED 1", 5, true );
-  Serial.println( node.add_sensor( &nsgo ) );
+  //MySensors_Node_Sensor_Gpio_Out nsgo( 11, "Simple LED 1", 5, true );
+  //Serial.println( node.add_sensor( &nsgo ) );
 
   // Or inline create
-  Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Gpio_In( 13, "Simple Motion", 2, true, INPUT_PULLUP, 500 ) ) );
-  Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Analog_In( 14, "Analog In", A0, false, true, true, 1024, 10000 ) ) );
-  //Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Pwm( 15, "PWM LED", 6, true, true, 255 ) ) );
-  Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Dht11( 20, 21, "DHT", 4, 10000 ) ) );
-  Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Rgb( 25, "RGB Light", 3, 5, 6, false ) ) );
-
+  //Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Gpio_In( 13, "Simple Motion", 2, true, INPUT_PULLUP, 500 ) ) );
+  //Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Analog_In( 14, "Analog In", A0, false, true, true, 1024, 10000 ) ) );
+  //Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Pwm( 15, "PWM LED", 6, LOW, true, 255 ) ) );
+  //Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Dht11( 20, 21, "DHT", 4, 10000 ) ) );
+  //Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Rgb( 20, "RGB Light", 3, 5, 6, false ) ) );
+  Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Neo( 25, "NEO Light", 2, 1 ) ) );
 
   // Call present() of node sensors
 
