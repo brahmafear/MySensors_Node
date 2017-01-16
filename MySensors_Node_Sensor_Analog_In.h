@@ -29,11 +29,13 @@ class MySensors_Node_Sensor_Analog_In : public MySensors_Node_Sensor {
                                      uint8_t  message_type,
                                      String   description,
                                      uint8_t  pin,            // Pin for analog device
+                                     bool     pullup,         // True if pullup resistor should be activated
+                                     bool     active,         // If false, value will be reversed
                                      bool     percentage,     // If true, value will be sent as 0-100 % of max value
                                      uint16_t max_value,      // Max value of device - normally 1024
                                      uint16_t interval        // How often to read and send in ms
                                    );
-    MySensors_Node_Sensor_Analog_In( uint8_t sensor_id, String description, uint8_t pin,
+    MySensors_Node_Sensor_Analog_In( uint8_t sensor_id, String description, uint8_t pin, bool pullup, bool active,
                                      bool percentage, uint16_t max_value, uint16_t interval );
     ~MySensors_Node_Sensor_Analog_In();
 
@@ -45,6 +47,8 @@ class MySensors_Node_Sensor_Analog_In : public MySensors_Node_Sensor {
 
   private:
     uint8_t  _pin;
+    bool     _pullup;
+    bool     _active;
     bool     _percentage;
     uint16_t _max_value;
     uint16_t _interval;

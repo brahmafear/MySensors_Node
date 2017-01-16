@@ -18,19 +18,21 @@
 #include "MySensors_Node_Sensor_Analog_In.h"
 
 MySensors_Node_Sensor_Analog_In::MySensors_Node_Sensor_Analog_In( uint8_t sensor_id,
-  uint8_t sensor_type, uint8_t message_type, String description, uint8_t pin, bool percentage,
-  uint16_t max_value, uint16_t interval )
+  uint8_t sensor_type, uint8_t message_type, String description, uint8_t pin,
+  bool pullup, bool active, bool percentage, uint16_t max_value, uint16_t interval )
   : MySensors_Node_Sensor( sensor_id, sensor_type, message_type, description ) {
   _pin = pin;
+  _pullup = pullup;
+  _active = active;
   _percentage = percentage;
   _max_value = max_value;
   _interval = interval;
 }
 
 MySensors_Node_Sensor_Analog_In::MySensors_Node_Sensor_Analog_In( uint8_t sensor_id,
-  String description, uint8_t pin, bool percentage, uint16_t max_value, uint16_t interval )
+  String description, uint8_t pin, bool pullup, bool active, bool percentage, uint16_t max_value, uint16_t interval )
   : MySensors_Node_Sensor_Analog_In( sensor_id, S_LIGHT_LEVEL, V_LIGHT_LEVEL, description,
-    pin, percentage, max_value, interval ) { }
+    pin, pullup, active, percentage, max_value, interval ) { }
 
 
 MySensors_Node_Sensor_Analog_In::~MySensors_Node_Sensor_Analog_In() {
@@ -47,12 +49,14 @@ MySensors_Node_Sensor* MySensors_Node_Sensor_Analog_In::clone() const {
 
 void MySensors_Node_Sensor_Analog_In::node_sensor_setup( ) {
   DEBUG_MSG(F("[MySensors_Node_Sensor_Analog_Input] Setup.\n"));
+  if ( _pullup ) digitalWrite( _pin, HIGH );
 }
 
 void MySensors_Node_Sensor_Analog_In::node_sensor_loop( ) {
   static uint32_t next_read = 0;
   if ( millis() > next_read ) { // time to check
     uint16_t value = analogRead( _pin );
+    value = _active ? value : _max_value - value;
     value = _percentage ? map( value, 0, _max_value, 0, 100 ) : value;
     DEBUG_MSG(F("[MySensors_Node_Sensor_Analog_Input] Sending value "));
     DEBUG_MSG( value );

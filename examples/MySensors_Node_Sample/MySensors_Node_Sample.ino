@@ -1,13 +1,13 @@
 /*
- * MySensors Node is a companion software to work with the MySensors library (http://www.mysensors.org) 
- * for wireless sensor/actuator connection to a home automation / monitoring system.  This software is 
- * designed to be used on the sensor / actuator device running on a Arduino microcontroller.  The base 
- * software can be extended to include additional functionality by extending the abstract 
- * MySensor_Node_Sensor class.  
- * 
+ * MySensors Node is a companion software to work with the MySensors library (http://www.mysensors.org)
+ * for wireless sensor/actuator connection to a home automation / monitoring system.  This software is
+ * designed to be used on the sensor / actuator device running on a Arduino microcontroller.  The base
+ * software can be extended to include additional functionality by extending the abstract
+ * MySensor_Node_Sensor class.
+ *
  * Created by Dave Myers <brahmafear@gmail.com>
  * Copyright (c) 2017
- * 
+ *
  * http://github.com/brahmafear/
  *
  * This program is free software; you can redistribute it and/or
@@ -18,11 +18,11 @@
 /*
  * Node config
  */
-#define MY_NODE_DESCRIPTION                "Sample"     // Any string description of the node to send to controller. 
-#define MY_NODE_VERSION                    "0.01"       // Version to send to controller.  
+#define MY_NODE_DESCRIPTION                "Sample"     // Any string description of the node to send to controller.
+#define MY_NODE_VERSION                    "0.01"       // Version to send to controller.
 #define ENABLE_DEBUG                                    // Enables debug messages to serial console.
 
-/* 
+/*
  * MySensor config
  */
 #define MY_DEBUG                                        // Displays *lots* of messages from MySensors library.
@@ -37,10 +37,10 @@
 
 // Includes
 #include <SPI.h>
-#include <MySensors.h>                                  // A bunch of code runs as soon as this is included - 
+#include <MySensors.h>                                  // A bunch of code runs as soon as this is included -
                                                         // and before sketch setup().  Uncomment MY_DEBUG to see.
-#include "MySensors_Node.h"                             // Must come *after* including MySensors.h.  
-  
+#include "MySensors_Node.h"                             // Must come *after* including MySensors.h.
+
 
 // Global variables
 MySensors_Node node(MY_NODE_DESCRIPTION, MY_NODE_VERSION);
@@ -59,14 +59,14 @@ void presentation() {
 
   // Or inline create
   Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Gpio_In( 13, "Simple Motion", 2, true, INPUT_PULLUP, 500 ) ) );
-  Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Analog_In( 14, "Analog In", A0, true, 1024, 10000 ) ) );
+  Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Analog_In( 14, "Analog In", A0, false, true, true, 1024, 10000 ) ) );
   Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Pwm( 15, "PWM LED", 6, true, true, 255 ) ) );
   Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Dht11( 20, 21, "PWM LED", 8, 10000 ) ) );
 
 
   // Call present() of node sensors
 
-  Serial.println("**** Presenting Sensors.");  
+  Serial.println("**** Presenting Sensors.");
   node.present();
 }
 
@@ -81,7 +81,7 @@ void setup() {
   Serial.println(F("\nNode begin."));
 
   // Add additional code here
-  
+
   // This line must be included in setup()
   node.setup();
 }
