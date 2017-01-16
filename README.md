@@ -82,6 +82,8 @@ for use with CdS light-dependent resistors but can be used to measure and report
   * Message type -- the message type associated with above type, defaults to V_LIGHT_LEVEL
   * Description -- a description to pass to controller
   * GPIO pin -- the microcontroller gpio pin to read
+  * Pullup -- true to activate pullup resistor
+  * Active -- set to false to reverse value
   * Percentage -- true if message to controller is a 0-100 representing a percentage
   * Max Value -- the value which represents a 100% reading, usually 1023
   * Interval -- frequency in ms to read and post to controller
