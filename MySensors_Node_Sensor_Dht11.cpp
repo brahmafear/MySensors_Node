@@ -50,7 +50,7 @@ void MySensors_Node_Sensor_Dht11::node_sensor_loop( ) {
     SimpleDHT11 dht;
     if( ! dht.read( _pin, &temp, &hum, NULL )) {
         // Uncomment after fix of issue #736 in MySensors github
-        // temp = getConfig().isMetric ? temp : round( 1.8 * temp + 32 );
+        temp = getControllerConfig().isMetric ? temp : round( 1.8 * temp + 32 );
         temp += _offset;
         DEBUG_MSG(F("[MySensors_Node_Sensor_Dht11] Sending Temperature: "));
         DEBUG_MSG(temp);

@@ -61,7 +61,7 @@ void presentation() {
   Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Gpio_In( 13, "Simple Motion", 2, true, INPUT_PULLUP, 500 ) ) );
   Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Analog_In( 14, "Analog In", A0, false, true, true, 1024, 10000 ) ) );
   Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Pwm( 15, "PWM LED", 6, true, true, 255 ) ) );
-  Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Dht11( 20, 21, "PWM LED", 8, 10000 ) ) );
+  Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Dht11( 20, 21, "DHT", 4, 10000 ) ) );
 
 
   // Call present() of node sensors
