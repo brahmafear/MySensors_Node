@@ -24,6 +24,8 @@ MySensors_Node_Sensor_Dht11::MySensors_Node_Sensor_Dht11( uint8_t temperature_id
   _pin = pin;
   _interval = interval;
   _offset = offset;
+
+  _next_read = random( 0, _interval );
 }
 
 MySensors_Node_Sensor_Dht11::~MySensors_Node_Sensor_Dht11() {
@@ -44,8 +46,7 @@ void MySensors_Node_Sensor_Dht11::node_sensor_setup( ) {
 }
 
 void MySensors_Node_Sensor_Dht11::node_sensor_loop( ) {
-  static uint32_t next_read = 0;
-  if ( millis() > next_read ) { // time to check
+  if ( millis() > _next_read ) { // time to check
     uint8_t temp, hum;
     SimpleDHT11 dht;
     if( ! dht.read( _pin, &temp, &hum, NULL )) {
@@ -62,6 +63,6 @@ void MySensors_Node_Sensor_Dht11::node_sensor_loop( ) {
     } else {
       DEBUG_MSG(F("[MySensors_Node_Sensor_Dht11] Bad read from device.\n"));
     }
-    next_read += _interval;
+    _next_read += _interval;
   }
 }

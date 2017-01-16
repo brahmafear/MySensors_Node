@@ -47,6 +47,8 @@ class MySensors_Node_Sensor_Gpio_In : public MySensors_Node_Sensor {
     bool     _active;
     uint8_t  _input_type;
     uint16_t _interval;
+    uint32_t _next_read = random( 0, _interval );
+    bool     _last_state = ! _active;
 
 
 };

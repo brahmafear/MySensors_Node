@@ -47,6 +47,7 @@ class MySensors_Node_Sensor_Dht11 : public MySensors_Node_Sensor {
     uint16_t _interval;
     int16_t  _offset;
 
+    uint32_t _next_read;
 };
 
 

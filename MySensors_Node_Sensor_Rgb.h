@@ -51,6 +51,10 @@ class MySensors_Node_Sensor_Rgb : public MySensors_Node_Sensor {
     bool     _active;
     bool     _msg_received;
 
+    uint8_t _r_ideal, _r_actual, _b_ideal, _b_actual, _g_ideal, _g_actual;
+    uint8_t _brightness = 100;
+    uint32_t _delay5s;
+
     void set_rgb( uint8_t r, uint8_t g, uint8_t b );
 
 };

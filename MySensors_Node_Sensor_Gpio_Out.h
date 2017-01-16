@@ -24,7 +24,7 @@
 
 class MySensors_Node_Sensor_Gpio_Out : public MySensors_Node_Sensor {
   public:
-    MySensors_Node_Sensor_Gpio_Out( uint8_t sensor_id, 
+    MySensors_Node_Sensor_Gpio_Out( uint8_t sensor_id,
                                     uint8_t sensor_type,
                                     uint8_t message_type,
                                     String description,
@@ -44,6 +44,7 @@ class MySensors_Node_Sensor_Gpio_Out : public MySensors_Node_Sensor {
     bool     _active;
     bool     _msg_received;
 
+    uint32_t _delay5s;
 };
 
 
