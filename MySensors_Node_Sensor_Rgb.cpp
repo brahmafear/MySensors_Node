@@ -25,6 +25,11 @@ MySensors_Node_Sensor_Rgb::MySensors_Node_Sensor_Rgb( uint8_t sensor_id,
   _grn_pin = grn_pin;
   _blu_pin = blu_pin;
   _active = active;
+
+  _r_ideal = 0; _r_actual = 0; _b_ideal = 0; _b_actual = 0; _g_ideal = 0; _g_actual = 0;
+  _brightness = 100;
+
+
   _msg_received = false;
 }
 
@@ -43,8 +48,6 @@ MySensors_Node_Sensor* MySensors_Node_Sensor_Rgb::clone() const {
 }
 
 void MySensors_Node_Sensor_Rgb::node_sensor_receive( const MyMessage &msg ) {
-  static uint8_t r_ideal = 0, r_actual = 0, b_ideal = 0, b_actual = 0, g_ideal = 0, g_actual = 0;
-  static uint8_t brightness = 100;
   if ( msg.type == V_RGB ) {
     String data = msg.getString();
     DEBUG_MSG(F("[MySensors_Node_Sensor_Rgb] RGB message received for "));
@@ -54,15 +57,15 @@ void MySensors_Node_Sensor_Rgb::node_sensor_receive( const MyMessage &msg ) {
     DEBUG_MSG(".\n");
 
     long number = (long) strtol( &data[0], NULL, 16);
-    r_ideal = ( number >> 16 );
-    g_ideal = ( number >> 8 & 0xFF );
-    b_ideal = ( number & 0xFF );
-    r_actual = round(( brightness / 100.0 ) * r_ideal );
-    g_actual = round(( brightness / 100.0 ) * g_ideal );
-    b_actual = round(( brightness / 100.0 ) * b_ideal );
-    set_rgb( r_actual, g_actual, b_actual );
+    _r_ideal = ( number >> 16 );
+    _g_ideal = ( number >> 8 & 0xFF );
+    _b_ideal = ( number & 0xFF );
+    _r_actual = round(( _brightness / 100.0 ) * _r_ideal );
+    _g_actual = round(( _brightness / 100.0 ) * _g_ideal );
+    _b_actual = round(( _brightness / 100.0 ) * _b_ideal );
+    set_rgb( _r_actual, _g_actual, _b_actual );
     char buff[10];
-    sprintf( buff, "%02X%02X%02X", r_actual, g_actual, b_actual );
+    sprintf( buff, "%02X%02X%02X", _r_actual, _g_actual, _b_actual );
     send( MyMessage(get_sensor_id(), V_RGB ).set( buff ) );
     _msg_received = true;
 
@@ -79,15 +82,15 @@ void MySensors_Node_Sensor_Rgb::node_sensor_receive( const MyMessage &msg ) {
       set_rgb( 0,0,0 );
       send( MyMessage(get_sensor_id(), V_STATUS ).set( 0 ));
     } else {
-      brightness = constrain( data, 0, 100 );
-      r_actual = round(( brightness / 100.0 ) * r_ideal );
-      g_actual = round(( brightness / 100.0 ) * g_ideal );
-      b_actual = round(( brightness / 100.0 ) * b_ideal );
-      set_rgb( r_actual, g_actual, b_actual );
+      _brightness = constrain( data, 0, 100 );
+      _r_actual = round(( _brightness / 100.0 ) * _r_ideal );
+      _g_actual = round(( _brightness / 100.0 ) * _g_ideal );
+      _b_actual = round(( _brightness / 100.0 ) * _b_ideal );
+      set_rgb( _r_actual, _g_actual, _b_actual );
       char buff[10];
-      sprintf( buff, "%02X%02X%02X", r_actual, g_actual, b_actual );
+      sprintf( buff, "%02X%02X%02X", _r_actual, _g_actual, _b_actual );
       send( MyMessage(get_sensor_id(), V_RGB ).set( buff ) );
-      send( MyMessage(get_sensor_id(), V_PERCENTAGE ).set( brightness ) );
+      send( MyMessage(get_sensor_id(), V_PERCENTAGE ).set( _brightness ) );
 
     }
     _msg_received = true;
@@ -103,14 +106,14 @@ void MySensors_Node_Sensor_Rgb::node_sensor_receive( const MyMessage &msg ) {
       set_rgb( 0,0,0 );
       send( MyMessage(get_sensor_id(), V_STATUS ).set( 0 ));
     } else {
-      if ( r_actual + g_actual + b_actual == 0 ) {
-        r_ideal = 255; g_ideal = 255; b_ideal = 255;
-        r_actual = 255; g_actual = 255; b_actual = 255;
+      if ( _r_actual + _g_actual + _b_actual == 0 ) {
+        _r_ideal = 255; _g_ideal = 255; _b_ideal = 255;
+        _r_actual = 255; _g_actual = 255; _b_actual = 255;
       }
 
-      set_rgb( r_actual, g_actual, b_actual );
+      set_rgb( _r_actual, _g_actual, _b_actual );
       char buff[10];
-      sprintf( buff, "%02X%02X%02X", r_actual, g_actual, b_actual );
+      sprintf( buff, "%02X%02X%02X", _r_actual, _g_actual, _b_actual );
       send( MyMessage(get_sensor_id(), V_RGB ).set( buff ) );
       send( MyMessage(get_sensor_id(), V_STATUS ).set( 1 ) );
     }
@@ -124,12 +127,12 @@ void MySensors_Node_Sensor_Rgb::node_sensor_setup( ) {
   pinMode( _red_pin, OUTPUT );
   pinMode( _grn_pin, OUTPUT );
   pinMode( _blu_pin, OUTPUT );
+  _delay5s = millis() + 5000;
   node_sensor_request();
 }
 
 void MySensors_Node_Sensor_Rgb::node_sensor_loop( ) {
-  static uint32_t delay5s = millis() + 5000;  // Give controller 5s to send previous state
-  if ( _msg_received == false && millis() > delay5s ) {  // set to default, inactive state
+  if ( _msg_received == false && millis() > _delay5s ) {  // set to default, inactive state
     DEBUG_MSG(F("[MySensors_Node_Sensor_Rgb] Setting default state.\n"));
     set_rgb(0,0,0);
     send( MyMessage(get_sensor_id(), V_RGB ).set( "000000" ) );

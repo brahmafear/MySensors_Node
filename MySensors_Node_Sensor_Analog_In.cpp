@@ -27,6 +27,8 @@ MySensors_Node_Sensor_Analog_In::MySensors_Node_Sensor_Analog_In( uint8_t sensor
   _percentage = percentage;
   _max_value = max_value;
   _interval = interval;
+
+  _next_read = random( 0, _interval );
 }
 
 MySensors_Node_Sensor_Analog_In::MySensors_Node_Sensor_Analog_In( uint8_t sensor_id,
@@ -53,8 +55,7 @@ void MySensors_Node_Sensor_Analog_In::node_sensor_setup( ) {
 }
 
 void MySensors_Node_Sensor_Analog_In::node_sensor_loop( ) {
-  static uint32_t next_read = 0;
-  if ( millis() > next_read ) { // time to check
+  if ( millis() > _next_read ) { // time to check
     uint16_t value = analogRead( _pin );
     value = _active ? value : _max_value - value;
     value = _percentage ? map( value, 0, _max_value, 0, 100 ) : value;
@@ -62,6 +63,6 @@ void MySensors_Node_Sensor_Analog_In::node_sensor_loop( ) {
     DEBUG_MSG( value );
     DEBUG_MSG(".\n");
     send( MyMessage(get_sensor_id(), get_message_type()).set( value ));
-    next_read += _interval;
+    _next_read += _interval;
   }
 }

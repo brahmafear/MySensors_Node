@@ -66,6 +66,8 @@ void MySensors_Node::setup() {
   }
 
   DEBUG_MSG(F("[MySensors_Node] "));
+  DEBUG_MSG( __MYSENSORS_NODE_VERSION );
+  DEBUG_MSG(F(" with sketch "));
   DEBUG_MSG( _description );
   DEBUG_MSG(F(" version "));
   DEBUG_MSG( _version );

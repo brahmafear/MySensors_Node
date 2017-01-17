@@ -55,11 +55,11 @@ void MySensors_Node_Sensor_Gpio_Out::node_sensor_setup( ) {
   digitalWrite( _pin, ! _active );
   pinMode( _pin, OUTPUT );
   node_sensor_request();
+  _delay5s = millis() + 5000;
 }
 
 void MySensors_Node_Sensor_Gpio_Out::node_sensor_loop( ) {
-  static uint32_t delay5s = millis() + 5000;  // Give controller 5s to send previous state
-  if ( _msg_received == false && millis() > delay5s ) {  // set to default, inactive state
+  if ( _msg_received == false && millis() > _delay5s ) {  // set to default, inactive state
     DEBUG_MSG(F("[MySensors_Node_Sensor_Gpio_Output] Setting default state.\n"));
     digitalWrite( _pin, ! _active );
     send( MyMessage(get_sensor_id(), get_message_type()).set( 0 ));

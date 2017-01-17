@@ -51,6 +51,9 @@ class MySensors_Node_Sensor_Pwm : public MySensors_Node_Sensor {
     uint16_t _max_value;
     bool     _msg_received;
 
+    uint16_t _prev_data;
+    uint32_t _delay5s;
+
     void set_pwm(uint16_t data);
 
 };

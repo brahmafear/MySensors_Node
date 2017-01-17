@@ -26,6 +26,8 @@ MySensors_Node_Sensor_Pwm::MySensors_Node_Sensor_Pwm( uint8_t sensor_id,
   _percentage = percentage;
   _max_value = max_value;
   _msg_received = false;
+
+  _prev_data = _max_value;
 }
 
 MySensors_Node_Sensor_Pwm::MySensors_Node_Sensor_Pwm( uint8_t sensor_id,
@@ -43,7 +45,6 @@ MySensors_Node_Sensor* MySensors_Node_Sensor_Pwm::clone() const {
 }
 
 void MySensors_Node_Sensor_Pwm::node_sensor_receive( const MyMessage &msg ) {
-  static uint16_t prev_data = _max_value;
   if ( msg.type == get_message_type() ) {
     int data = msg.getInt();
     DEBUG_MSG(F("[MySensors_Node_Sensor_Pwm] Dimmer message received for "));
@@ -54,7 +55,7 @@ void MySensors_Node_Sensor_Pwm::node_sensor_receive( const MyMessage &msg ) {
     set_pwm( data );
     send( MyMessage(get_sensor_id(), get_message_type()).set(data) );
     send( MyMessage(get_sensor_id(), V_STATUS ).set( data > 0 ? 1 : 0 ) );
-    if ( data != 0 ) prev_data = data; // don't save if we are turning off
+    if ( data != 0 ) _prev_data = data; // don't save if we are turning off
     _msg_received = true;
   } else if ( msg.type == V_STATUS ) { //Also need to respond to this type
     int data = msg.getInt();
@@ -67,8 +68,8 @@ void MySensors_Node_Sensor_Pwm::node_sensor_receive( const MyMessage &msg ) {
       set_pwm( 0 );
       send( MyMessage(get_sensor_id(), V_STATUS ).set( 0 ) );
     } else {
-      set_pwm( prev_data );
-      send( MyMessage(get_sensor_id(), get_message_type()).set(prev_data) );
+      set_pwm( _prev_data );
+      send( MyMessage(get_sensor_id(), get_message_type()).set(_prev_data) );
       send( MyMessage(get_sensor_id(), V_STATUS ).set( 1 ) );
     }
   } else {
@@ -79,14 +80,13 @@ void MySensors_Node_Sensor_Pwm::node_sensor_receive( const MyMessage &msg ) {
 void MySensors_Node_Sensor_Pwm::node_sensor_setup( ) {
   DEBUG_MSG(F("[MySensors_Node_Sensor_Pwm] Setup.\n"));
   pinMode( _pin, OUTPUT );
+  _delay5s = millis() + 5000;
   node_sensor_request();
 }
 
 void MySensors_Node_Sensor_Pwm::node_sensor_loop( ) {
-  static uint32_t delay5s = millis() + 5000;  // Give controller 5s to send previous state
-  if ( _msg_received == false && millis() > delay5s ) {  // set to default, inactive state
+  if ( _msg_received == false && millis() > _delay5s ) {  // set to default, inactive state
     DEBUG_MSG(F("[MySensors_Node_Sensor_Pwm] Setting default state.\n"));
-    //analogWrite( _pin, 0 );
     set_pwm( 0 );
     send( MyMessage(get_sensor_id(), get_message_type()).set( 0 ));
     send( MyMessage(get_sensor_id(), V_STATUS ).set( 0 ) );

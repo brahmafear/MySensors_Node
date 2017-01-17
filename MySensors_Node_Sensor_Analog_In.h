@@ -53,7 +53,7 @@ class MySensors_Node_Sensor_Analog_In : public MySensors_Node_Sensor {
     uint16_t _max_value;
     uint16_t _interval;
 
-
+    uint32_t _next_read;
 };
 
 
