@@ -30,7 +30,8 @@ class MySensors_Node_Sensor_Neo : public MySensors_Node_Sensor {
                                     uint8_t message_type,
                                     String description,
                                     uint8_t pin,          // Pin used by this device
-                                    uint16_t count
+                                    uint16_t count,
+                                    uint16_t neo_type = NEO_GRB + NEO_KHZ800
                               );
     MySensors_Node_Sensor_Neo( uint8_t sensor_id, String description, uint8_t pin, uint16_t count );
     ~MySensors_Node_Sensor_Neo();

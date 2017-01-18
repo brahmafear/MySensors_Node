@@ -31,7 +31,8 @@ bool MySensors_Node::add_sensor( MySensors_Node_Sensor *sensor ) {
     if ( _node_sensors[i]->get_sensor_id() == sensor->get_sensor_id() ) return false;
   }
 
-  _node_sensors.push_back(sensor->clone());
+  // _node_sensors.push_back(sensor->clone());
+  _node_sensors.push_back( sensor );
 
   DEBUG_MSG(F("[MySensors_Node] Added: "));
   DEBUG_MSG( sensor->get_description() );

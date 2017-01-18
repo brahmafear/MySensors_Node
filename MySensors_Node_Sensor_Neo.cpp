@@ -18,10 +18,10 @@
 #include "MySensors_Node_Sensor_Neo.h"
 
 MySensors_Node_Sensor_Neo::MySensors_Node_Sensor_Neo( uint8_t sensor_id,
-  uint8_t sensor_type, uint8_t message_type, String description, uint8_t pin, uint16_t count )
+  uint8_t sensor_type, uint8_t message_type, String description, uint8_t pin, uint16_t count, uint16_t neo_type )
   : MySensors_Node_Sensor( sensor_id, sensor_type, message_type, description ) {
 
-  _strip = Adafruit_NeoPixel(count, pin, NEO_RGB + NEO_KHZ800);
+  _strip = Adafruit_NeoPixel(count, pin, neo_type);
   _strip.begin();
   _strip.clear();
   _msg_received = false;
