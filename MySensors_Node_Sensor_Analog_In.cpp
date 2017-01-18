@@ -31,11 +31,11 @@ MySensors_Node_Sensor_Analog_In::MySensors_Node_Sensor_Analog_In( uint8_t sensor
   _next_read = random( 0, _interval );
 }
 
-MySensors_Node_Sensor_Analog_In::MySensors_Node_Sensor_Analog_In( uint8_t sensor_id,
+/* MySensors_Node_Sensor_Analog_In::MySensors_Node_Sensor_Analog_In( uint8_t sensor_id,
   String description, uint8_t pin, bool pullup, bool active, bool percentage, uint16_t max_value, uint16_t interval )
   : MySensors_Node_Sensor_Analog_In( sensor_id, S_LIGHT_LEVEL, V_LIGHT_LEVEL, description,
     pin, pullup, active, percentage, max_value, interval ) { }
-
+*/
 
 MySensors_Node_Sensor_Analog_In::~MySensors_Node_Sensor_Analog_In() {
 

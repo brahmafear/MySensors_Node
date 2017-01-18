@@ -24,9 +24,9 @@ MySensors_Node_Sensor_Gpio_Out::MySensors_Node_Sensor_Gpio_Out( uint8_t sensor_i
   _msg_received = false;
 }
 
-MySensors_Node_Sensor_Gpio_Out::MySensors_Node_Sensor_Gpio_Out( uint8_t sensor_id, String description, uint8_t pin, bool active )
+/* MySensors_Node_Sensor_Gpio_Out::MySensors_Node_Sensor_Gpio_Out( uint8_t sensor_id, String description, uint8_t pin, bool active )
   : MySensors_Node_Sensor_Gpio_Out( sensor_id, S_BINARY, V_STATUS, description, pin, active ) { }
-
+*/
 
 MySensors_Node_Sensor_Gpio_Out::~MySensors_Node_Sensor_Gpio_Out() {
 

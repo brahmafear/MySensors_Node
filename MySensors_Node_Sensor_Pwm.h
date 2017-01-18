@@ -24,17 +24,18 @@
 
 class MySensors_Node_Sensor_Pwm : public MySensors_Node_Sensor {
   public:
-    MySensors_Node_Sensor_Pwm( uint8_t sensor_id,
-                                    uint8_t sensor_type,
-                                    uint8_t message_type,
-                                    String description,
-                                    uint8_t pin,          // Pin used by this device
-                                    bool active,          // The 'active' state of the device
-                                    bool percentage,      // Is the incoming message a percentage?
-                                    uint16_t max_value    // The max for PWM = 100% duty cycle
+    MySensors_Node_Sensor_Pwm(  uint8_t sensor_id       = 30,
+                                uint8_t sensor_type     = S_DIMMER,
+                                uint8_t message_type    = V_PERCENTAGE,
+                                String description      = "Dimmer",
+                                uint8_t pin             = 6,            // Pin used by this device
+                                bool active             = true,         // The 'active' state of the device
+                                bool percentage         = true,         // Is the incoming message a percentage?
+                                uint16_t max_value      = 255           // The max for PWM = 100% duty cycle
                               );
-    MySensors_Node_Sensor_Pwm( uint8_t sensor_id, String description, uint8_t pin,
+    /* MySensors_Node_Sensor_Pwm( uint8_t sensor_id, String description, uint8_t pin,
                                bool active, bool percentage, uint16_t max_value );
+    */
     ~MySensors_Node_Sensor_Pwm();
 
     //void node_sensor_present();

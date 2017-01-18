@@ -30,11 +30,11 @@ MySensors_Node_Sensor_Pwm::MySensors_Node_Sensor_Pwm( uint8_t sensor_id,
   _prev_data = _max_value;
 }
 
-MySensors_Node_Sensor_Pwm::MySensors_Node_Sensor_Pwm( uint8_t sensor_id,
+/* MySensors_Node_Sensor_Pwm::MySensors_Node_Sensor_Pwm( uint8_t sensor_id,
   String description, uint8_t pin, bool active, bool percentage, uint16_t max_value )
   : MySensors_Node_Sensor_Pwm( sensor_id, S_DIMMER, V_PERCENTAGE, description,
     pin, active, percentage, max_value ) { }
-
+*/
 
 MySensors_Node_Sensor_Pwm::~MySensors_Node_Sensor_Pwm() {
 

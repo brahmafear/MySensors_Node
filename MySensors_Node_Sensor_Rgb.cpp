@@ -33,11 +33,11 @@ MySensors_Node_Sensor_Rgb::MySensors_Node_Sensor_Rgb( uint8_t sensor_id,
   _msg_received = false;
 }
 
-MySensors_Node_Sensor_Rgb::MySensors_Node_Sensor_Rgb( uint8_t sensor_id,
+/* MySensors_Node_Sensor_Rgb::MySensors_Node_Sensor_Rgb( uint8_t sensor_id,
   String description, uint8_t red_pin, uint8_t grn_pin, uint8_t blu_pin, bool active )
   : MySensors_Node_Sensor_Rgb( sensor_id, S_RGB_LIGHT, V_RGB, description,
     red_pin, grn_pin, blu_pin, active ) { }
-
+*/
 
 MySensors_Node_Sensor_Rgb::~MySensors_Node_Sensor_Rgb() {
 

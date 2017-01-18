@@ -31,90 +31,89 @@ type to a non-constant-defined value!
 
 
 
-Built in sensor/actuator types are listed below.
+Built in sensor/actuator types are listed below.  Other types can be created by extending the
+MySensors_Node_Sensor class.  
 
 **GPIO Output**
 
-MySensors_Node_Sensor_Gpio_Out takes either 6 or 4 initialization parameters.  Suitable
-for any binary indicator or output.
-  * Sensor ID -- the child id of this sensor / actuator
-  * Sensor type -- the type from MySensors library, defaults to S_BINARY
-  * Message type -- the message type associated with above type, defaults to V_STATUS
-  * Description -- a description to pass to controller
-  * GPIO pin -- the microcontroller gpio pin to manipulate
-  * GPIO "on" state -- true for active high, false for active low
-
-  Sensor type and message type may be omitted which will default to S_BINARY
-  and V_STATUS.  
+MySensors_Node_Sensor_Gpio_Out is suitable for any binary indicator or output.
+  * Sensor ID -- the child id of this sensor / actuator, default 5
+  * Sensor type -- the type from MySensors library, default S_BINARY
+  * Message type -- the message type associated with above type, default V_STATUS
+  * Description -- a description to pass to controller, default "Output"
+  * GPIO pin -- the microcontroller gpio pin to manipulate, default 2
+  * GPIO "on" state -- true for active high, false for active low, default true
 
 **GPIO Input**
 
-MySensors_Node_Sensor_Gpio_In takes either 8 or 6 initialization parameters.  Suitable
-for PIR motion sensors, door/window sensors, ....
-  * Sensor ID -- the child id of this sensor / actuator
-  * Sensor type -- the type from MySensors library, defaults to S_MOTION
-  * Message type -- the message type associated with above type, defaults to V_TRIPPED
-  * Description -- a description to pass to controller
-  * GPIO pin -- the microcontroller gpio pin to read
-  * GPIO "on" state -- true for active high, false for active low
-  * Input type -- INPUT, INPUT_PULLUP, or INPUT_PULLDOWN - note: microcontroller dependent
-  * Interval -- frequency in ms to read and post to controller
+MySensors_Node_Sensor_Gpio_In is suitable for PIR motion sensors, door/window sensors, ....
+  * Sensor ID -- the child id of this sensor / actuator, default 20
+  * Sensor type -- the type from MySensors library, default S_MOTION
+  * Message type -- the message type associated with above type, default V_TRIPPED
+  * Description -- a description to pass to controller, default "Motion"
+  * GPIO pin -- the microcontroller gpio pin to read, default A2
+  * GPIO "on" state -- true for active high, false for active low, default true
+  * Input type -- INPUT, INPUT_PULLUP, or INPUT_PULLDOWN, default INPUT_PULLUP
+      - note: dependent on microcontroller supporting that feature on that pin
+  * Interval -- frequency in ms to read and post to controller, default 500
 
 **PWM Output**
 
-MySensors_Node_Sensor_Pwm takes either 8 or 6 initialization parameters.  Primarily intended
-for use as a dimmable light but could possibly be used for servo control.
-  * Sensor ID -- the child id of this sensor / actuator
-  * Sensor type -- the type from MySensors library, defaults to S_DIMMER
-  * Message type -- the message type associated with above type, defaults to V_PERCENTAGE
-  * Description -- a description to pass to controller  
-  * GPIO pin -- the microcontroller gpio pin to manipulate
-  * GPIO "on" state -- true for active high, false for active low
-  * Percentage -- true if message from controller is a 0-100 representing a percentage
-  * Max Value -- the value which represents a 100% pwm duty cycle, usually 255
+MySensors_Node_Sensor_Pwm primarily intended for use as a dimmable light but could
+possibly be used for servo control or other pulse width modulation needs.
+  * Sensor ID -- the child id of this sensor / actuator, default 30
+  * Sensor type -- the type from MySensors library, default S_DIMMER
+  * Message type -- the message type associated with above type, default V_PERCENTAGE
+  * Description -- a description to pass to controller, default "Dimmer"
+  * GPIO pin -- the microcontroller gpio pin to manipulate, default 6
+  * GPIO "on" state -- true for active high, false for active low, default true
+  * Percentage -- true if message is 0-100 representing a percentage, default true
+  * Max Value -- the value which represents a 100% pwm duty cycle, default 255
 
 **Analog Input**
 
-MySensors_Node_Sensor_Analog_In takes either 8 or 6 initialization parameters.  Intended
-for use with CdS light-dependent resistors but can be used to measure and report any analog value.
-  * Sensor ID -- the child id of this sensor / actuator
-  * Sensor type -- the type from MySensors library, defaults to S_LIGHT_LEVEL
-  * Message type -- the message type associated with above type, defaults to V_LIGHT_LEVEL
-  * Description -- a description to pass to controller
-  * GPIO pin -- the microcontroller gpio pin to read
-  * Pullup -- true to activate pullup resistor
-  * Active -- set to false to reverse value
-  * Percentage -- true if message to controller is a 0-100 representing a percentage
-  * Max Value -- the value which represents a 100% reading, usually 1023
-  * Interval -- frequency in ms to read and post to controller
+MySensors_Node_Sensor_Analog_In is intended for use with CdS light-dependent resistors
+but can be used to measure and report any analog value.
+  * Sensor ID -- the child id of this sensor / actuator, default 15
+  * Sensor type -- the type from MySensors library, default S_LIGHT_LEVEL
+  * Message type -- the message type associated with above type, default V_LIGHT_LEVEL
+  * Description -- a description to pass to controller, default "Light Level"
+  * GPIO pin -- the microcontroller gpio pin to read, default A3
+  * Pullup -- true to activate pullup resistor, default true
+  * Active -- set to false to reverse value, default false
+  * Percentage -- true if message is 0-100 representing a percentage, default true
+  * Max Value -- the value which represents a 100% reading, default 1023
+  * Interval -- frequency in ms to read and post to controller, default 60000
 
 **DHT Temperature/Humidity Sensor**  
 
-MySensors_Node_Sensor_Dht11 takes 6 initialization parameters.  Intended for use with DHT11 sensor.
-  * Temperature ID -- the child id for temperature
-  * Humidity ID -- the child id for humidity
-  * Description -- a description to pass to controller
-  * GPIO pin -- the microcontroller gpio pin connected to DHT11
-  * Pullup -- true to activate pullup resistor
-  * Interval -- frequency in ms to read and post to controller
-  * Offset -- negative or positive value that temperature reading should be adjusted by
+MySensors_Node_Sensor_Dht11 is intended for use with DHT11 sensor.
+  * Temperature ID -- the child id for temperature, default 10
+  * Humidity ID -- the child id for humidity, default 11
+  * Description -- a description to pass to controller, default "DHT"
+  * GPIO pin -- the microcontroller gpio pin connected to DHT11, default 4
+  * Interval -- frequency in ms to read and post to controller, default 120000
+  * Offset -- negative or positive value that temperature reading should be adjusted by, default 0
 
 **RGB LED**
 
-MySensors_Node_Sensor_Rgb takes either 8 or 6 initialization parameters.  Primarily intended
-for use as a dimmable light but could possibly be used for servo control.
-  * Sensor ID -- the child id of this sensor / actuator
-  * Sensor type -- the type from MySensors library, defaults to S_RGB_LIGHT
-  * Message type -- the message type associated with above type, defaults to V_RGB
-  * Description -- a description to pass to controller  
-  * Red pin -- the rgb red pin
-  * Green pin -- the rgb green pin
-  * Blue pin -- the rgb blue pin
-  * GPIO "on" state -- true for active high (common cathode), false for active low (common anode)
-
-
-
-**FUTURE -- coming very soon**
-
+MySensors_Node_Sensor_Rgb is intended for use as a dimmable, multicolor light.
+  * Sensor ID -- the child id of this sensor / actuator, default 33
+  * Sensor type -- the type from MySensors library, default S_RGB_LIGHT
+  * Message type -- the message type associated with above type, default V_RGB
+  * Description -- a description to pass to controller  , default "RGB"
+  * Red pin -- the rgb red pin, default 3
+  * Green pin -- the rgb green pin, default 5
+  * Blue pin -- the rgb blue pin, default 6
+  * GPIO "on" state -- true for active high, false for active low, default true
 
 **NeoPixel**
+
+MySensors_Node_Sensor_Neo is intended for use as with WS2812 'NeoPixel' LEDs.
+  * Sensor ID -- the child id of this sensor / actuator, default 36
+  * Sensor type -- the type from MySensors library, default S_RGB_LIGHT
+  * Message type -- the message type associated with above type, default V_RGB
+  * Description -- a description to pass to controller  , default "NeoPixel"
+  * Pin -- the pin connected to NeoPixel In, default 8
+  * Count -- the number of LEDs in NeoPixel array, default 24
+  * NeoPixel Type -- Specific to certain models of LED, default NEO_GRB + NEO_KHZ800

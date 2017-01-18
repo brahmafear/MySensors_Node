@@ -25,15 +25,15 @@
 
 class MySensors_Node_Sensor_Neo : public MySensors_Node_Sensor {
   public:
-    MySensors_Node_Sensor_Neo( uint8_t sensor_id,
-                                    uint8_t sensor_type,
-                                    uint8_t message_type,
-                                    String description,
-                                    uint8_t pin,          // Pin used by this device
-                                    uint16_t count,
-                                    uint16_t neo_type = NEO_GRB + NEO_KHZ800
+    MySensors_Node_Sensor_Neo(  uint8_t sensor_id       = 36,
+                                uint8_t sensor_type     = S_RGB_LIGHT,
+                                uint8_t message_type    = V_RGB,
+                                String description      = "NeoPixel",
+                                uint8_t pin             = 8,
+                                uint16_t count          = 24,
+                                uint16_t neo_type       = NEO_GRB + NEO_KHZ800
                               );
-    MySensors_Node_Sensor_Neo( uint8_t sensor_id, String description, uint8_t pin, uint16_t count );
+    //MySensors_Node_Sensor_Neo( uint8_t sensor_id, String description, uint8_t pin, uint16_t count );
     ~MySensors_Node_Sensor_Neo();
 
     //void node_sensor_present();

@@ -24,17 +24,16 @@
 
 class MySensors_Node_Sensor_Rgb : public MySensors_Node_Sensor {
   public:
-    MySensors_Node_Sensor_Rgb( uint8_t sensor_id,
-                                    uint8_t sensor_type,
-                                    uint8_t message_type,
-                                    String description,
-                                    uint8_t red_pin,          // Pin used by this device
-                                    uint8_t grn_pin,
-                                    uint8_t blu_pin,
-                                    bool active          // The 'active' state of the device
+    MySensors_Node_Sensor_Rgb(  uint8_t sensor_id       = 33,
+                                uint8_t sensor_type     = S_RGB_LIGHT,
+                                uint8_t message_type    = V_RGB,
+                                String description      = "RGB",
+                                uint8_t red_pin         = 3,          // Pins used by this device
+                                uint8_t grn_pin         = 5,
+                                uint8_t blu_pin         = 6,
+                                bool active             = true        // The 'active' state of the device
                               );
-    MySensors_Node_Sensor_Rgb( uint8_t sensor_id, String description, uint8_t red_pin, uint8_t grn_pin, uint8_t blu_pin,
-                               bool active );
+    // MySensors_Node_Sensor_Rgb( uint8_t sensor_id, String description, uint8_t red_pin, uint8_t grn_pin, uint8_t blu_pin, bool active );
     ~MySensors_Node_Sensor_Rgb();
 
     //void node_sensor_present();

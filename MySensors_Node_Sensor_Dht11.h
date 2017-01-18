@@ -26,12 +26,12 @@
 
 class MySensors_Node_Sensor_Dht11 : public MySensors_Node_Sensor {
   public:
-    MySensors_Node_Sensor_Dht11( uint8_t  temperature_id,
-                                 uint8_t  humidity_id,
-                                 String   description,
-                                 uint8_t  pin,            // Pin for dht11 device
-                                 uint16_t interval,       // How often to read and send in ms
-                                 int16_t  offset = 0      // Fixed offset of temperature
+    MySensors_Node_Sensor_Dht11( uint8_t  temperature_id  = 10,
+                                 uint8_t  humidity_id     = 11,
+                                 String   description     = "DHT",
+                                 uint8_t  pin             = 4,      // Pin for dht11 device
+                                 uint16_t interval        = 120000, // How often to read and send in ms
+                                 int16_t  offset          = 0       // Fixed offset of temperature
                                );
     ~MySensors_Node_Sensor_Dht11();
 

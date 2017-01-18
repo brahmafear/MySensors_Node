@@ -24,19 +24,20 @@
 
 class MySensors_Node_Sensor_Analog_In : public MySensors_Node_Sensor {
   public:
-    MySensors_Node_Sensor_Analog_In( uint8_t  sensor_id,
-                                     uint8_t  sensor_type,
-                                     uint8_t  message_type,
-                                     String   description,
-                                     uint8_t  pin,            // Pin for analog device
-                                     bool     pullup,         // True if pullup resistor should be activated
-                                     bool     active,         // If false, value will be reversed
-                                     bool     percentage,     // If true, value will be sent as 0-100 % of max value
-                                     uint16_t max_value,      // Max value of device - normally 1024
-                                     uint16_t interval        // How often to read and send in ms
+    MySensors_Node_Sensor_Analog_In( uint8_t  sensor_id       = 15,
+                                     uint8_t  sensor_type     = S_LIGHT_LEVEL,
+                                     uint8_t  message_type    = V_LIGHT_LEVEL,
+                                     String   description     = "Light Level",
+                                     uint8_t  pin             = A3,             // Pin for analog device
+                                     bool     pullup          = true,           // True if pullup resistor should be activated
+                                     bool     active          = false,          // If false, value will be reversed
+                                     bool     percentage      = true,           // If true, value will be sent as 0-100 % of max value
+                                     uint16_t max_value       = 1024,           // Max value of device - normally 1024
+                                     uint16_t interval        = 60000           // How often to read and send in ms
                                    );
-    MySensors_Node_Sensor_Analog_In( uint8_t sensor_id, String description, uint8_t pin, bool pullup, bool active,
+    /* MySensors_Node_Sensor_Analog_In( uint8_t sensor_id, String description, uint8_t pin, bool pullup, bool active,
                                      bool percentage, uint16_t max_value, uint16_t interval );
+    */
     ~MySensors_Node_Sensor_Analog_In();
 
     //void node_sensor_present();

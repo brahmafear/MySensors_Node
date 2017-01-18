@@ -21,11 +21,10 @@
 #define __MYSENSORS_NODE_VERSION    "0.95"
 
 #include <Arduino.h>
-#include "debug.h"
-//#include "../MySensors/core/MyMessage.h"                            // Terrible hack to get things to work
 #include "core/MyMessage.h"
 #include "core/MySensorsCore.h"
 
+#include "debug.h"
 #include "vector.h"
 #include "MySensors_Node_Sensor.h"
 

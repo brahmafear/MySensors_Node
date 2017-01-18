@@ -18,8 +18,8 @@
 /*
  * Node config
  */
-#define MY_NODE_DESCRIPTION                "Sample"     // Any string description of the node to send to controller.
-#define MY_NODE_VERSION                    "0.01"       // Version to send to controller.
+#define MY_NODE_DESCRIPTION             "Sample"        // Any string description of the node to send to controller.
+#define MY_NODE_VERSION                 "0.01"          // Version to send to controller.
 #define ENABLE_DEBUG                                    // Enables debug messages to serial console.
 
 /*
@@ -53,17 +53,20 @@ void presentation() {
   // Add sensors here
 
   Serial.println("**** Adding Sensors.");
-  // Create a sensor object to add
-  //MySensors_Node_Sensor_Gpio_Out nsgo( 11, "Simple LED 1", 5, true );
-  //Serial.println( node.add_sensor( &nsgo ) );
+  /*
+   * Create sensor objects to add:
+   * Must use 'new' keyword to properly create My_Node_Sensor objects.
+   * See Github readme or source files for default values.
+   */
 
-  // Or inline create
-  //Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Gpio_In( 13, "Simple Motion", 2, true, INPUT_PULLUP, 500 ) ) );
-  //Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Analog_In( 14, "Analog In", A0, false, true, true, 1024, 10000 ) ) );
-  //Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Pwm( 15, "PWM LED", 6, LOW, true, 255 ) ) );
-  //Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Dht11( 20, 21, "DHT", 4, 10000 ) ) );
-  //Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Rgb( 20, "RGB Light", 3, 5, 6, false ) ) );
-  Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Neo( 25, "NEO Light", 2, 1 ) ) );
+  Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Gpio_In( ) ) );
+  Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Gpio_In(
+    21, S_BINARY, V_STATUS, "Button", A1, LOW, INPUT_PULLUP, 500  ) ) );
+  //Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Analog_In( ) ) );
+  //Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Pwm( ) ) );
+  //Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Dht11( ) ) );
+  //Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Rgb( ) ) );
+  Serial.println( node.add_sensor(  new MySensors_Node_Sensor_Neo( ) ) );
 
   // Call present() of node sensors
 
@@ -79,7 +82,7 @@ void receive( const MyMessage &msg ) {
 
 void setup() {
   Serial.begin(115200);
-  Serial.println(F("\nNode begin."));
+  Serial.println(F("\n**** Node begin."));
 
   // Add additional code here
 

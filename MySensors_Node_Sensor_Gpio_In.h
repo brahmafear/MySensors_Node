@@ -24,16 +24,16 @@
 
 class MySensors_Node_Sensor_Gpio_In : public MySensors_Node_Sensor {
   public:
-    MySensors_Node_Sensor_Gpio_In( uint8_t sensor_id,
-                                   uint8_t sensor_type,
-                                   uint8_t message_type,
-                                   String description,
-                                   uint8_t pin,
-                                   bool active,
-                                   uint8_t input_type,
-                                   uint16_t interval
+    MySensors_Node_Sensor_Gpio_In( uint8_t sensor_id        = 20,
+                                   uint8_t sensor_type      = S_MOTION,
+                                   uint8_t message_type     = V_TRIPPED,
+                                   String description       = "Motion",
+                                   uint8_t pin              = A2,
+                                   bool active              = true,
+                                   uint8_t input_type       = INPUT_PULLUP,
+                                   uint16_t interval        = 500
                                  );
-    MySensors_Node_Sensor_Gpio_In( uint8_t sensor_id, String description, uint8_t pin, bool active, uint8_t input_type, uint16_t interval );
+    //MySensors_Node_Sensor_Gpio_In( uint8_t sensor_id, String description, uint8_t pin, bool active, uint8_t input_type, uint16_t interval );
     ~MySensors_Node_Sensor_Gpio_In();
 
     //void node_sensor_present();
