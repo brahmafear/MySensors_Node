@@ -33,7 +33,7 @@ class MySensors_Node_Sensor_Analog_In : public MySensors_Node_Sensor {
                                      bool     active          = false,          // If false, value will be reversed
                                      bool     percentage      = true,           // If true, value will be sent as 0-100 % of max value
                                      uint16_t max_value       = 1024,           // Max value of device - normally 1024
-                                     uint16_t interval        = 60000           // How often to read and send in ms
+                                     uint32_t interval        = 60000           // How often to read and send in ms
                                    );
     /* MySensors_Node_Sensor_Analog_In( uint8_t sensor_id, String description, uint8_t pin, bool pullup, bool active,
                                      bool percentage, uint16_t max_value, uint16_t interval );
@@ -52,7 +52,7 @@ class MySensors_Node_Sensor_Analog_In : public MySensors_Node_Sensor {
     bool     _active;
     bool     _percentage;
     uint16_t _max_value;
-    uint16_t _interval;
+    uint32_t _interval;
 
     uint32_t _next_read;
 };

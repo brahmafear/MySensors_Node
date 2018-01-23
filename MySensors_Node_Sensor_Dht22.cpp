@@ -18,7 +18,7 @@
 #include "MySensors_Node_Sensor_Dht22.h"
 
 MySensors_Node_Sensor_Dht22::MySensors_Node_Sensor_Dht22( uint8_t temperature_id,
-  uint8_t humidity_id, String description, uint8_t pin, uint16_t interval, int16_t offset )
+  uint8_t humidity_id, String description, uint8_t pin, uint32_t interval, int16_t offset )
   : MySensors_Node_Sensor( temperature_id, S_TEMP, V_TEMP, description ) {
   _humidity_id = humidity_id;
   _pin = pin;

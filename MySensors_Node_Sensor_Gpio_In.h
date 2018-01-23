@@ -31,7 +31,7 @@ class MySensors_Node_Sensor_Gpio_In : public MySensors_Node_Sensor {
                                    uint8_t pin              = A2,
                                    bool active              = true,
                                    uint8_t input_type       = INPUT,
-                                   uint16_t interval        = 500
+                                   uint32_t interval        = 500
                                  );
     //MySensors_Node_Sensor_Gpio_In( uint8_t sensor_id, String description, uint8_t pin, bool active, uint8_t input_type, uint16_t interval );
     ~MySensors_Node_Sensor_Gpio_In();
@@ -46,7 +46,7 @@ class MySensors_Node_Sensor_Gpio_In : public MySensors_Node_Sensor {
     uint8_t  _pin;
     bool     _active;
     uint8_t  _input_type;
-    uint16_t _interval;
+    uint32_t _interval;
     uint32_t _next_read = random( 0, _interval );
     bool     _last_state = ! _active;
 

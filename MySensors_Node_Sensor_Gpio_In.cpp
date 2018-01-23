@@ -18,7 +18,7 @@
 #include "MySensors_Node_Sensor_Gpio_In.h"
 
 MySensors_Node_Sensor_Gpio_In::MySensors_Node_Sensor_Gpio_In( uint8_t sensor_id, uint8_t sensor_type,
-  uint8_t message_type, String description, uint8_t pin, bool active, uint8_t input_type, uint16_t interval )
+  uint8_t message_type, String description, uint8_t pin, bool active, uint8_t input_type, uint32_t interval )
   : MySensors_Node_Sensor( sensor_id, sensor_type, message_type, description ) {
   _pin = pin;
   _active = active;
@@ -30,7 +30,7 @@ MySensors_Node_Sensor_Gpio_In::MySensors_Node_Sensor_Gpio_In( uint8_t sensor_id,
 
 }
 
-/* MySensors_Node_Sensor_Gpio_In::MySensors_Node_Sensor_Gpio_In( uint8_t sensor_id, String description, uint8_t pin, bool active, uint8_t input_type, uint16_t interval )
+/* MySensors_Node_Sensor_Gpio_In::MySensors_Node_Sensor_Gpio_In( uint8_t sensor_id, String description, uint8_t pin, bool active, uint8_t input_type, uint32_t interval )
   : MySensors_Node_Sensor_Gpio_In( sensor_id, S_MOTION, V_TRIPPED, description, pin, active, input_type, interval ) { }
 */
 

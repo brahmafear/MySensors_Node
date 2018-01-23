@@ -19,7 +19,7 @@
 
 MySensors_Node_Sensor_Analog_In::MySensors_Node_Sensor_Analog_In( uint8_t sensor_id,
   uint8_t sensor_type, uint8_t message_type, String description, uint8_t pin,
-  bool pullup, bool active, bool percentage, uint16_t max_value, uint16_t interval )
+  bool pullup, bool active, bool percentage, uint16_t max_value, uint32_t interval )
   : MySensors_Node_Sensor( sensor_id, sensor_type, message_type, description ) {
   _pin = pin;
   _pullup = pullup;
