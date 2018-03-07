@@ -27,11 +27,12 @@
 
 class MySensors_Node_Sensor_DS18X : public MySensors_Node_Sensor {
   public:
-    MySensors_Node_Sensor_DS18X( uint8_t  temperature_id  = 10,
+    MySensors_Node_Sensor_DS18X( uint8_t  temperature_id  = 60,
                                  String   description     = "DS18X",
                                  uint8_t  pin             = 2,      // Pin for DS18X device
                                  uint32_t interval        = 120000, // How often to read and send in ms
-                                 int16_t  offset          = 0       // Fixed offset of temperature
+                                 int16_t  offset          = 0,      // Fixed offset of temperature
+                                 uint8_t  count           = 1       // How many devices on this bus
                                );
     ~MySensors_Node_Sensor_DS18X();
 
@@ -42,13 +43,17 @@ class MySensors_Node_Sensor_DS18X : public MySensors_Node_Sensor {
     MySensors_Node_Sensor* clone() const;
 
   private:
-    uint8_t  _pin;
-    uint32_t _interval;
-    int16_t  _offset;
+    uint8_t                      _pin;
+    uint32_t                     _interval;
+    int16_t                      _offset;
+    uint8_t                      _count;
 
-    uint32_t _next_read;
-    bool     _waiting;
-    uint16_t _read_delay;
+    uint32_t                     _next_read;
+    bool                         _waiting;
+    uint16_t                     _read_delay;
+    OneWire *                    _ow;
+    DallasTemperature *          _dt;
+
 };
 
 
