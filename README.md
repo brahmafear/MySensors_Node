@@ -95,6 +95,24 @@ MySensors_Node_Sensor_Dht11 is intended for use with DHT11 sensor.
   * Interval -- frequency in ms to read and post to controller, default 120000
   * Offset -- negative or positive value that temperature reading should be adjusted by, default 0
 
+MySensors_Node_Sensor_Dht22 is intended for use with DHT22 sensor.
+  * Temperature ID -- the child id for temperature, default 10
+  * Humidity ID -- the child id for humidity, default 11
+  * Description -- a description to pass to controller, default "DHT"
+  * GPIO pin -- the microcontroller gpio pin connected to DHT11, default 4
+  * Interval -- frequency in ms to read and post to controller, default 120000
+  * Offset -- negative or positive value that temperature reading should be adjusted by, default 0
+
+**DS18X Temperature Sensor**
+
+MySensors_Node_Sensor_DS18X is intended for use with DHT11 sensor.
+  * Temperature ID -- the first child id for temperature, default 10
+  * Description -- a description to pass to controller, default "DS18X"
+  * GPIO pin -- the microcontroller gpio pin connected to the OneWire bus, default 2
+  * Interval -- frequency in ms to read and post to controller, default 120000
+  * Offset -- negative or positive value that temperature reading should be adjusted by, default 0
+  * Count -- the number of devices on this bus, each device will use child id incremented by one
+
 **RGB LED**
 
 MySensors_Node_Sensor_Rgb is intended for use as a dimmable, multicolor light.
