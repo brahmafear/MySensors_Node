@@ -37,7 +37,7 @@
 #include "MySensors_Node_Sensor_DS18X.h"
 #include "MySensors_Node_Sensor_Rgb.h"
 #include "MySensors_Node_Sensor_Neo.h"
-
+#include "MySensors_Node_Sensor_Relay.h"
 
 
 class MySensors_Node {
