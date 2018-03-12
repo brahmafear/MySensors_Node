@@ -30,12 +30,12 @@ class MySensors_Node_Sensor_Relay : public MySensors_Node_Sensor {
                                     uint8_t  sensor_type   = S_COVER,
                                     uint8_t  message_type  = V_STATUS,
                                     String   description   = "Relay",
-                                    uint8_t  r_pin         = 3,          // Pin used by the relay
-                                    uint8_t  s_pin         = 4,          // Pin used by position sensor
-                                    bool     r_active      = LOW,        // The 'active' state of the relay
-                                    uint16_t pulse         = 1000,       // The length of relay pulse
-                                    uint8_t  input_type    = INPUT,      // INPUT, INPUT_PULLUP
-                                    bool     s_open        = HIGH        // The gpio state for 'open'
+                                    uint8_t  r_pin         = 3,            // Pin used by the relay
+                                    uint8_t  s_pin         = 4,            // Pin used by position sensor
+                                    bool     r_active      = LOW,          // The 'active' state of the relay
+                                    uint16_t pulse         = 1000,         // The length of relay pulse
+                                    uint8_t  input_type    = INPUT_PULLUP, // INPUT, INPUT_PULLUP
+                                    bool     s_open        = HIGH          // The gpio state for 'open'
                                   );
     ~MySensors_Node_Sensor_Relay();
 

@@ -135,3 +135,17 @@ MySensors_Node_Sensor_Neo is intended for use as with WS2812 'NeoPixel' LEDs.
   * Pin -- the pin connected to NeoPixel In, default 8
   * Count -- the number of LEDs in NeoPixel array, default 24
   * NeoPixel Type -- Specific to certain models of LED, default NEO_GRB + NEO_KHZ800
+
+**Relay**
+
+MySensors_Node_Sensor_Relay is a specific use for using a relay to control a 'dumb' garage door.
+  * Sensor ID -- the child id of this sensor / actuator, default 25
+  * Sensor type -- the type from MySensors library, default S_COVER
+  * Message type -- the message type associated with above type, default V_STATUS
+  * Description -- a description to pass to controller  , default "Relay"
+  * Relay Pin -- the pin connected to the relay control, default 3
+  * Sensor Pin -- the pin connected to the sensor determining door position, default 4
+  * Relay active -- the gpio state that will cause the relay to be active, default LOW
+  * Pulse length -- the length in ms for how long the relay should be active when triggered, default 1000
+  * Input type -- the type for pinMode for the sensor pin, default INPUT_PULLUP
+  * Sensor active -- The gpio state that represents the door open, default HIGH
