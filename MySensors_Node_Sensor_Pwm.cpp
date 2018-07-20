@@ -27,7 +27,7 @@ MySensors_Node_Sensor_Pwm::MySensors_Node_Sensor_Pwm( uint8_t sensor_id,
   _max_value = max_value;
   _msg_received = false;
 
-  _prev_data = _max_value;
+  _prev_data = percentage ? 100 : _max_value;
 }
 
 /* MySensors_Node_Sensor_Pwm::MySensors_Node_Sensor_Pwm( uint8_t sensor_id,

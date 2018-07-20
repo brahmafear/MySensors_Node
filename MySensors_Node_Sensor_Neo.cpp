@@ -56,9 +56,10 @@ void MySensors_Node_Sensor_Neo::node_sensor_receive( const MyMessage &msg ) {
       send( MyMessage(get_sensor_id(), V_STATUS ).set( 0 ));
     } else {
       set_neo( color );
-      char buff[10];
-      sprintf( buff, "%06X", _strip.getPixelColor(0) );
-      send( MyMessage(get_sensor_id(), V_RGB ).set( buff ) );
+      //char buff[10];
+      //sprintf( buff, "%06X", color );
+      //send( MyMessage(get_sensor_id(), V_RGB ).set( buff ) );
+      send( MyMessage(get_sensor_id(), V_RGB ).set( data ) );
     }
     _msg_received = true;
 
