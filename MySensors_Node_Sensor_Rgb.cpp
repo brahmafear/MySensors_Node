@@ -104,7 +104,7 @@ void MySensors_Node_Sensor_Rgb::node_sensor_receive( const MyMessage &msg ) {
     DEBUG_MSG(".\n");
     if ( data == 0 ) {
       set_rgb( 0,0,0 );
-      send( MyMessage(get_sensor_id(), V_STATUS ).set( 0 ));
+      //send( MyMessage(get_sensor_id(), V_STATUS ).set( 0 ));
     } else {
       if ( _r_actual + _g_actual + _b_actual == 0 ) {
         _r_ideal = 255; _g_ideal = 255; _b_ideal = 255;
@@ -112,11 +112,16 @@ void MySensors_Node_Sensor_Rgb::node_sensor_receive( const MyMessage &msg ) {
       }
 
       set_rgb( _r_actual, _g_actual, _b_actual );
-      char buff[10];
-      sprintf( buff, "%02X%02X%02X", _r_actual, _g_actual, _b_actual );
-      send( MyMessage(get_sensor_id(), V_RGB ).set( buff ) );
-      send( MyMessage(get_sensor_id(), V_STATUS ).set( 1 ) );
+      //char buff[10];
+      //sprintf( buff, "%02X%02X%02X", _r_actual, _g_actual, _b_actual );
+      //send( MyMessage(get_sensor_id(), V_RGB ).set( buff ) );
+      //send( MyMessage(get_sensor_id(), V_STATUS ).set( 1 ) );
     }
+    char buff[10];
+    sprintf( buff, "%02X%02X%02X", _r_actual, _g_actual, _b_actual );
+    send( MyMessage(get_sensor_id(), V_RGB ).set( buff ) );
+    send( MyMessage(get_sensor_id(), V_STATUS ).set( data ) );
+
   } else {
     DEBUG_MSG(F("[MySensors_Node_Sensor_Rgb] Incorrect message type received.\n"));
   }
