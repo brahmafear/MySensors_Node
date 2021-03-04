@@ -7,7 +7,7 @@
 #ifndef __DEBUG_H
 #define __DEBUG_H
 
-#define ENABLE_DEBUG
+// #define ENABLE_DEBUG
 
 #ifdef ENABLE_DEBUG
     #define DEBUG_MSG(...) Serial.print( __VA_ARGS__ )

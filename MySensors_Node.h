@@ -18,7 +18,7 @@
 #ifndef __MYSENSORS_NODE_H
 #define __MYSENSORS_NODE_H
 
-#define __MYSENSORS_NODE_VERSION    "0.95"
+#define __MYSENSORS_NODE_VERSION    "0.97"
 
 #include <Arduino.h>
 #include "core/MyMessage.h"
