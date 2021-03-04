@@ -28,7 +28,7 @@ class MySensors_Node_Sensor_Blinker : public MySensors_Node_Sensor {
                                    uint8_t sensor_type      = S_BINARY,
                                    uint8_t message_type     = V_STATUS,
                                    String description       = "Blinker",
-                                   uint32_t interval        = 1000
+                                   uint32_t interval        = 5000
                                  );
     ~MySensors_Node_Sensor_Blinker();
 
