@@ -39,7 +39,7 @@
 #include "MySensors_Node_Sensor_Rgb.h"
 #include "MySensors_Node_Sensor_Neo.h"
 #include "MySensors_Node_Sensor_Relay.h"
-
+#include "MySensors_Node_Sensor_Blinker.h"
 
 class MySensors_Node {
 
